@@ -1,28 +1,27 @@
-# 2 On Streng Games — v9.0
+# 2 On Streng Games — v9.1
 
-Versão prática de MVP multiplayer X/O.
+Versão profissional e executável do MVP multiplayer X/O.
 
-## Inclui
-- Partida rápida
-- Criar e entrar em salas por código
-- Tabuleiro sincronizado em tempo real
-- Reconexão visual e estados de jogo
-- Chat da partida
+## Interface
+- HTML5 sem framework
+- CSS3 responsivo com sidebar, cards, estados, modal e dashboard
+- Gráfico de atividade construído em CSS, sem biblioteca externa
+- Layout pensado para desktop e telemóvel
+
+## Multiplayer
+- Node.js + WebSocket
+- Salas por código
+- Partidas sincronizadas em tempo real
+- Chat de sala
 - Nova ronda
-- Interface responsiva para telemóvel
-- Endpoint `/api/health`
+- Health endpoint
 
 ## Executar
 ```bash
 npm install
 npm start
 ```
-Abrir `http://localhost:3000`.
+Abra `http://localhost:3000`.
 
-## Próximas etapas
-1. PostgreSQL para contas, campeonatos e resultados.
-2. Autenticação de jogadores.
-3. Persistência e recuperação de salas.
-4. Ranking real.
-5. Poderes com seleção de casas.
-6. WebRTC com TURN.
+## Próxima camada
+PostgreSQL, autenticação, ranking persistente, campeonatos, poderes e WebRTC/TURN podem ser ligados sem alterar a estrutura visual principal.

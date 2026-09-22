@@ -38,7 +38,7 @@ function newRoom(name="Partida rápida") {
 function serve(req,res) {
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
   if (url.pathname === "/api/health") {
-    return json(res,200,{ok:true,version:"9.0.0",appName:APP_NAME,rooms:rooms.size});
+    return json(res,200,{ok:true,version:"9.0.0",appName:APP_NAME,rooms:rooms.size,players:clients.size});
   }
   if (url.pathname === "/api/rooms" && req.method === "POST") {
     let body=""; req.on("data",c=>body+=c); req.on("end",()=> {
