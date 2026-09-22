@@ -1,38 +1,28 @@
-# 🎮 2 On Streng Games
+# 2 On Streng Games — v9.0
 
-**Desenvolvido por: 2 On Tecnolong**
+Versão prática de MVP multiplayer X/O.
 
-Plataforma multiplayer de X/O com campeonatos, equipas, jogadores, ranking, poderes, chat, reações e voz WebRTC.
+## Inclui
+- Partida rápida
+- Criar e entrar em salas por código
+- Tabuleiro sincronizado em tempo real
+- Reconexão visual e estados de jogo
+- Chat da partida
+- Nova ronda
+- Interface responsiva para telemóvel
+- Endpoint `/api/health`
 
-## Stack
+## Executar
+```bash
+npm install
+npm start
+```
+Abrir `http://localhost:3000`.
 
-- Node.js 20+
-- WebSocket (`ws`)
-- PostgreSQL via `pg`
-- Render Free para aplicação
-- Supabase Free para PostgreSQL
-- PWA
-- WebRTC para voz
-
-## Persistência
-
-A partir da versão 8.0, o estado dos campeonatos não depende do filesystem do Render. O servidor guarda os dados no PostgreSQL através de `DATABASE_URL`.
-
-## Deploy
-
-Consulte `DEPLOY_RENDER.md` para o passo a passo completo.
-
-## Variáveis principais
-
-- `DATABASE_URL` — conexão PostgreSQL/Supabase.
-- `APP_ORIGIN` — URL HTTPS final do Render.
-- `ADMIN_TOKEN` — token para operações administrativas.
-- `APP_NAME` — nome da plataforma.
-- `ROOM_TTL_MS` — tempo de vida de salas inativas.
-- `BACKUP_INTERVAL_MS` — intervalo de snapshots.
-
-## Marca
-
-**2 On Streng Games**
-
-**Desenvolvido por: 2 On Tecnolong**
+## Próximas etapas
+1. PostgreSQL para contas, campeonatos e resultados.
+2. Autenticação de jogadores.
+3. Persistência e recuperação de salas.
+4. Ranking real.
+5. Poderes com seleção de casas.
+6. WebRTC com TURN.
