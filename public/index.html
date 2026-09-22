@@ -1,26 +1,25 @@
-<!doctype html><html lang="pt">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827">
-<title>2 On Streng Games</title><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/style.css"></head>
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827"><title>2 On Streng Games</title>
+<link rel="stylesheet" href="/style.css">
+</head>
 <body>
-<header><div class="brand">✕/○ <span>2 On Streng Games</span></div><nav><button data-page="home">Início</button><button data-page="championships">Campeonatos</button><button data-page="ranking">Ranking</button></nav></header>
+<header class="top"><a class="brand" href="/">2 ON <span>STRENG GAMES</span></a><nav><button data-view="home">Início</button><button data-view="ranking">Ranking</button></nav></header>
 <main>
-<section id="home" class="page active"><div class="hero"><span class="small">2 On Streng Games · Render Edition</span><h1>Joga. Compete. Evolui.</h1><p>Multiplayer em tempo real, campeonatos, equipas, chat, reações, voz e poderes opcionais.</p>
-<div class="actions"><button class="primary" id="newCup">Criar campeonato</button><button id="quickRoom">Criar partida rápida</button></div></div>
-<div class="grid three"><article><b>💬 Chat</b><p>Geral, equipa e partida, com reações.</p></article><article><b>🎙️ Voz</b><p>Áudio WebRTC direto entre jogadores.</p></article><article><b>⚡ Poderes</b><p>Opcional por campeonato e ganhos por vitória.</p></article></div></section>
-
-<section id="championships" class="page"><div class="bar"><h2>Campeonatos</h2><button class="primary" id="newCup2">Novo</button></div><div id="cups"></div></section>
-<section id="ranking" class="page"><h2>Ranking de jogadores</h2><div id="rankingBox"></div></section>
-
-<section id="create" class="page"><h2>Criar campeonato</h2><form id="cupForm" class="card">
-<input name="name" placeholder="Nome do campeonato" required><textarea name="description" placeholder="Descrição"></textarea>
-<select name="format"><option value="league">Liga</option><option value="knockout">Eliminatórias</option></select>
-<label><input type="checkbox" name="doubleRound"> Duas voltas</label>
-<hr><h3>⚡ Poderes</h3><label><input type="checkbox" name="powersEnabled"> Ativar poderes neste campeonato</label>
-<div class="power-options"><label><input type="checkbox" name="p" value="extra_move" checked> ⚡ Movimento extra (2)</label><label><input type="checkbox" name="p" value="shield" checked> 🛡️ Escudo (2)</label><label><input type="checkbox" name="p" value="vision"> 👁️ Visão (3)</label><label><input type="checkbox" name="p" value="block"> 🚫 Bloqueio (3)</label></div>
-<label>Pontos ganhos por vitória <input type="number" name="gain" min="1" max="10" value="1"></label>
-<hr><h3>💬 Comunicação</h3><label><input type="checkbox" name="chat" checked> Chat</label><label><input type="checkbox" name="voice" checked> Microfone/voz</label><label><input type="checkbox" name="reactions" checked> Emojis/reações</label>
-<button class="primary" type="submit">Criar</button></form></section>
-
-<section id="manage" class="page"><div id="manageBox"></div></section>
-<section id="play" class="page"><div id="playBox"></div></section>
-</main><div id="toast"></div><script src="/app.js"></script><footer class="footer">2 On Streng Games · Desenvolvido por: <b>2 On Tecnolong</b></footer></body></html>
+<section id="home" class="view active">
+<div class="hero"><p class="eyebrow">MULTIPLAYER • X/O • TEMPO REAL</p><h1>Joga. Compete.<br><span>Evolui.</span></h1><p class="lead">Cria uma sala, convida um adversário e joga diretamente do teu telemóvel.</p>
+<div class="actions"><button class="primary" id="quick">Jogar agora</button><button id="joinOpen">Entrar numa sala</button></div></div>
+<div class="feature-grid"><article><b>Partidas rápidas</b><p>Começa em poucos segundos.</p></article><article><b>Tempo real</b><p>Jogadas sincronizadas por WebSocket.</p></article><article><b>Experiência simples</b><p>Interface limpa e adaptada ao telemóvel.</p></article></div>
+</section>
+<section id="room" class="view"><div class="section-head"><div><p class="eyebrow">SALA DE JOGO</p><h2 id="roomTitle">A preparar partida</h2></div><button id="copyRoom">Copiar código</button></div>
+<div class="players"><div><small>JOGADOR X</small><strong id="px">Aguardando</strong></div><div class="versus">VS</div><div><small>JOGADOR O</small><strong id="po">Aguardando</strong></div></div>
+<div id="status" class="status">A ligar…</div><div id="board" class="board" aria-label="Tabuleiro X/O"></div>
+<div class="game-actions"><button id="restart">Nova ronda</button><button id="leave">Sair da sala</button></div>
+<div class="chat"><h3>Chat da partida</h3><div id="messages" class="messages"></div><form id="chatForm"><input id="chatInput" maxlength="300" placeholder="Escreve uma mensagem…"><button>Enviar</button></form></div>
+</section>
+<section id="join" class="view"><h2>Entrar numa sala</h2><p class="muted">Introduz o código partilhado pelo outro jogador.</p><form id="joinForm" class="panel"><label>Nome<input id="joinName" required maxlength="40" placeholder="O teu nome"></label><label>Código da sala<input id="joinCode" required maxlength="20" placeholder="ABC123"></label><button class="primary">Entrar na sala</button></form></section>
+<section id="ranking" class="view"><h2>Ranking</h2><div class="panel"><p class="muted">O ranking competitivo será ligado ao PostgreSQL na próxima etapa. Nesta versão, as partidas rápidas funcionam sem cadastro.</p></div></section>
+</main><div id="toast" role="status"></div><script src="/app.js"></script>
+</body></html>
