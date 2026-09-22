@@ -1,25 +1,42 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt-AO">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827"><title>2 On Streng Games</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020"><meta name="description" content="2 On Streng Games — plataforma multiplayer X/O">
+<title>2 On Streng Games</title>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header class="top"><a class="brand" href="/">2 ON <span>STRENG GAMES</span></a><nav><button data-view="home">Início</button><button data-view="ranking">Ranking</button></nav></header>
-<main>
-<section id="home" class="view active">
-<div class="hero"><p class="eyebrow">MULTIPLAYER • X/O • TEMPO REAL</p><h1>Joga. Compete.<br><span>Evolui.</span></h1><p class="lead">Cria uma sala, convida um adversário e joga diretamente do teu telemóvel.</p>
-<div class="actions"><button class="primary" id="quick">Jogar agora</button><button id="joinOpen">Entrar numa sala</button></div></div>
-<div class="feature-grid"><article><b>Partidas rápidas</b><p>Começa em poucos segundos.</p></article><article><b>Tempo real</b><p>Jogadas sincronizadas por WebSocket.</p></article><article><b>Experiência simples</b><p>Interface limpa e adaptada ao telemóvel.</p></article></div>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-mark">2</div><div><strong>ON STRENG</strong><span>GAMES</span></div></div>
+  <nav class="nav">
+    <button class="nav-item active" data-view="dashboard"><span>⌂</span>Visão geral</button>
+    <button class="nav-item" data-view="play"><span>✦</span>Jogar</button>
+    <button class="nav-item" data-view="championships"><span>♜</span>Campeonatos</button>
+    <button class="nav-item" data-view="ranking"><span>↗</span>Ranking</button>
+  </nav>
+  <div class="side-card"><div class="status-dot"></div><div><b>Servidor online</b><small>Multiplayer ativo</small></div></div>
+  <div class="sidebar-footer">v9.1 • Professional UI</div>
+</aside>
+<div class="backdrop" id="backdrop"></div>
+<main class="main">
+<header class="topbar">
+  <button class="icon-btn mobile-menu" id="menuBtn">☰</button>
+  <div class="breadcrumb"><span>2 On Streng</span><b>/</b><strong id="pageTitle">Visão geral</strong></div>
+  <div class="top-actions"><button class="icon-btn" id="healthBtn" title="Estado do servidor">●</button><button class="profile"><span class="avatar">JS</span><span class="profile-name">Jogador</span><span>⌄</span></button></div>
+</header>
+<div class="content">
+<section class="view active" id="dashboard">
+  <div class="hero-card"><div><p class="eyebrow">CENTRO DE JOGO</p><h1>Joga melhor.<br><span>Compete em tempo real.</span></h1><p>Uma experiência rápida para partidas X/O, salas privadas e competição entre jogadores.</p><div class="hero-actions"><button class="btn primary" id="quickHero">Jogar agora <span>→</span></button><button class="btn ghost" id="openJoin">Entrar com código</button></div></div><div class="hero-art"><div class="orb orb-a"></div><div class="orb orb-b"></div><div class="mini-board"><i>X</i><i></i><i>O</i><i></i><i>X</i><i></i><i>O</i><i></i><i>X</i></div></div></div>
+  <div class="stat-grid"><article class="stat-card"><span>Partidas rápidas</span><strong id="statRooms">0</strong><small>salas ativas agora</small></article><article class="stat-card"><span>Jogadores ligados</span><strong id="statPlayers">0</strong><small>conexões em tempo real</small></article><article class="stat-card"><span>Estado</span><strong class="online-text">Online</strong><small>servidor operacional</small></article><article class="stat-card"><span>Versão</span><strong>9.1</strong><small>interface profissional</small></article></div>
+  <div class="grid-2"><article class="panel chart-panel"><div class="panel-head"><div><p class="eyebrow">ATIVIDADE</p><h2>Ritmo de partidas</h2></div><span class="badge">Demo visual</span></div><div class="chart-bars" id="activityChart"></div><div class="chart-labels"><span>08h</span><span>10h</span><span>12h</span><span>14h</span><span>16h</span><span>18h</span><span>20h</span></div></article><article class="panel"><div class="panel-head"><div><p class="eyebrow">ACESSO RÁPIDO</p><h2>Começar</h2></div></div><div class="quick-list"><button data-action="quick"><span class="quick-icon">⚡</span><div><b>Partida rápida</b><small>Criar uma sala em segundos</small></div><span>→</span></button><button data-action="join"><span class="quick-icon">#</span><div><b>Entrar numa sala</b><small>Usar o código do adversário</small></div><span>→</span></button><button data-action="ranking"><span class="quick-icon">↗</span><div><b>Ver ranking</b><small>Consultar classificação</small></div><span>→</span></button></div></article></div>
 </section>
-<section id="room" class="view"><div class="section-head"><div><p class="eyebrow">SALA DE JOGO</p><h2 id="roomTitle">A preparar partida</h2></div><button id="copyRoom">Copiar código</button></div>
-<div class="players"><div><small>JOGADOR X</small><strong id="px">Aguardando</strong></div><div class="versus">VS</div><div><small>JOGADOR O</small><strong id="po">Aguardando</strong></div></div>
-<div id="status" class="status">A ligar…</div><div id="board" class="board" aria-label="Tabuleiro X/O"></div>
-<div class="game-actions"><button id="restart">Nova ronda</button><button id="leave">Sair da sala</button></div>
-<div class="chat"><h3>Chat da partida</h3><div id="messages" class="messages"></div><form id="chatForm"><input id="chatInput" maxlength="300" placeholder="Escreve uma mensagem…"><button>Enviar</button></form></div>
-</section>
-<section id="join" class="view"><h2>Entrar numa sala</h2><p class="muted">Introduz o código partilhado pelo outro jogador.</p><form id="joinForm" class="panel"><label>Nome<input id="joinName" required maxlength="40" placeholder="O teu nome"></label><label>Código da sala<input id="joinCode" required maxlength="20" placeholder="ABC123"></label><button class="primary">Entrar na sala</button></form></section>
-<section id="ranking" class="view"><h2>Ranking</h2><div class="panel"><p class="muted">O ranking competitivo será ligado ao PostgreSQL na próxima etapa. Nesta versão, as partidas rápidas funcionam sem cadastro.</p></div></section>
-</main><div id="toast" role="status"></div><script src="/app.js"></script>
+<section class="view" id="play"><div class="page-heading"><div><p class="eyebrow">MULTIPLAYER</p><h1>Jogar</h1><p>Cria uma sala ou entra numa partida existente.</p></div></div><div class="play-grid"><article class="panel action-panel"><div class="large-icon">⚡</div><h2>Partida rápida</h2><p>Cria uma sala privada e partilha o código com o teu adversário.</p><button class="btn primary full" id="quickPlay">Criar sala</button></article><article class="panel action-panel"><div class="large-icon">#</div><h2>Entrar numa sala</h2><p>Já tens um código? Entra diretamente na partida.</p><button class="btn full" id="joinPlay">Introduzir código</button></article></div></section>
+<section class="view" id="championships"><div class="page-heading"><div><p class="eyebrow">COMPETIÇÃO</p><h1>Campeonatos</h1><p>A área está preparada para a próxima camada competitiva.</p></div><span class="badge">Em preparação</span></div><div class="empty-state"><div class="empty-icon">♜</div><h2>Campeonatos em breve</h2><p>A próxima versão ligará Liga e Eliminatórias ao PostgreSQL, com calendário, equipas e resultados persistentes.</p></div></section>
+<section class="view" id="ranking"><div class="page-heading"><div><p class="eyebrow">CLASSIFICAÇÃO</p><h1>Ranking</h1><p>Estrutura visual pronta para receber os dados competitivos.</p></div></div><article class="panel ranking-panel"><div class="ranking-row header"><span>#</span><span>Jogador</span><span>Vitórias</span><span>Taxa</span></div><div class="ranking-row"><b>01</b><span><i class="avatar sm">JS</i> Jogador</span><strong>24</strong><span class="rate">—</span></div><div class="ranking-row muted-row"><b>02</b><span><i class="avatar sm">XO</i> Convidado</span><strong>0</strong><span class="rate">—</span></div></article></section>
+<section class="view" id="room"><div class="room-top"><div><p class="eyebrow">PARTIDA AO VIVO</p><h1 id="roomTitle">Sala</h1></div><div class="room-code"><small>CÓDIGO</small><b id="roomCodeLabel">—</b><button id="copyRoom">Copiar</button></div></div><div class="room-layout"><article class="panel game-panel"><div class="players"><div><small>JOGADOR X</small><b id="px">Aguardando</b></div><div class="score">VS</div><div><small>JOGADOR O</small><b id="po">Aguardando</b></div></div><div class="status" id="status">A preparar ligação…</div><div class="board" id="board"></div><div class="game-actions"><button class="btn" id="restart">Nova ronda</button><button class="btn ghost" id="leave">Sair</button></div></article><aside class="panel chat-panel"><div class="panel-head"><div><p class="eyebrow">COMUNICAÇÃO</p><h2>Chat</h2></div><span class="live-pill">● AO VIVO</span></div><div class="messages" id="messages"></div><form id="chatForm"><input id="chatInput" maxlength="300" autocomplete="off" placeholder="Escreve uma mensagem…"><button class="btn primary">Enviar</button></form></aside></div></section>
+</div>
+</main></div>
+<div class="modal" id="joinModal"><div class="modal-card"><button class="modal-close" id="closeModal">×</button><p class="eyebrow">ENTRAR</p><h2>Entrar numa sala</h2><p>Usa o código que recebeste do outro jogador.</p><form id="joinForm"><label>Nome<input id="joinName" required maxlength="40" value="Jogador"></label><label>Código da sala<input id="joinCode" required maxlength="20" placeholder="ABC123"></label><button class="btn primary full">Entrar na sala</button></form></div></div><div id="toast"></div><script src="/app.js"></script>
 </body></html>
